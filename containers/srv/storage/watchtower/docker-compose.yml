@@ -1,0 +1,21 @@
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_LABEL_ENABLE=true
+      - WATCHTOWER_SCHEDULE=0 0 4 * * *
+      - WATCHTOWER_NOTIFICATIONS=email
+      - WATCHTOWER_NOTIFICATION_EMAIL_FROM=$EMAIL_SERVER
+      - WATCHTOWER_NOTIFICATION_EMAIL_TO=$EMAIL_SERVER
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER=$SMTP_HOST_SERVER
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_USER=$SMTP_USERNAME_SERVER
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PASSWORD=$SMTP_PASSWORD_SERVER
+      - WATCHTOWER_NOTIFICATION_EMAIL_SERVER_PORT=587
+      - WATCHTOWER_NOTIFICATION_EMAIL_DELAY=2
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

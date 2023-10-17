@@ -1,0 +1,19 @@
+  motioneye:
+    container_name: motioneye
+    image: ccrisan/motioneye:master-amd64
+    volumes:
+    - "$DOCKERS_DIR/motioneye/data:/etc/motioneye"
+    - "$SURVEILLANCE_DIR:/var/lib/motioneye"
+    ports:
+    - "9765:8765" #web
+    - "9081:9081" #camera1
+    - "9082:9082" #camera2
+    - "9083:9083" #camera3
+    - "9084:9084" #camera4
+    - "9085:9085" #camera5
+    - "9086:9086" #camera6
+    environment:
+    - TZ=$TZ
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

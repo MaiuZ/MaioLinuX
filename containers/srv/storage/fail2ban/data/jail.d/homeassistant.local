@@ -1,0 +1,9 @@
+[homeassistant]
+backend = auto
+enabled = true
+filter = homeassistant
+maxretry = 5
+bantime = 86400
+findtime = 43200
+banaction = %(banaction_allports)s
+logpath = /srv/storage/homeassistant/config/home-assistant.log #sostituire /srv/storage con la "DOCKERS_DIR" del file "general_parameters.env"

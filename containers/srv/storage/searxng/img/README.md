@@ -1,0 +1,1 @@
+Fonte: https://github.com/searxng/searxng/tree/master/searx/static/themes/simple/img

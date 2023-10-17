@@ -1,0 +1,53 @@
+---
+###############################################################
+#                   Authelia configuration                    #
+###############################################################
+
+jwt_secret: strong_password #genera una password sicura ad esempio una password da 64 caratteri generata su https://bitwarden.com/password-generator/
+#default_redirection_url: https://public.yourdomain.tld #sostituire yourdomain.tld con il proprio dominio
+
+server:
+  host: 0.0.0.0
+  port: 9091
+
+log:
+  level: debug
+
+totp:
+  issuer: authelia.com
+
+authentication_backend:
+  file:
+    path: /config/users_database.yml
+
+access_control:
+  default_policy: deny
+  rules:
+#    - domain: public.yourdomain.tld #sostituire yourdomain.tld con il proprio dominio
+#      policy: bypass
+    - domain: cerca.yourdomain.tld #sostituire yourdomain.tld con il proprio dominio
+      policy: one_factor
+#    - domain: secure.yourdomain.tld #sostituire yourdomain.tld con il proprio dominio
+#      policy: two_factor
+
+session:
+  name: authelia_session
+  secret: unsecure_session_secret
+  expiration: 3600  # 1 ora
+  inactivity: 300  # 5 minuti
+  domain: yourdomain.tld #sostituire yourdomain.tld con il proprio dominio
+
+regulation:
+  max_retries: 3
+  find_time: 120
+  ban_time: 300
+
+storage:
+  encryption_key: strong_password #genera una password sicura ad esempio una password da 64 caratteri generata su https://bitwarden.com/password-generator/
+  local:
+    path: /config/db.sqlite3
+
+notifier:
+  filesystem:
+    filename: /config/notification.txt
+...

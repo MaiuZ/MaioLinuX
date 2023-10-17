@@ -1,0 +1,28 @@
+version: "3"
+services:
+  librey:
+    image: ghcr.io/ahwxorg/librey:latest
+    container_name: librey
+    network_mode: bridge
+    ports:
+      - 18080:8080
+    environment:
+      - CONFIG_GOOGLE_DOMAIN=it
+      - CONFIG_LANGUAGE=it
+      - CONFIG_NUMBER_OF_RESULTS=10
+      - CONFIG_INVIDIOUS_INSTANCE=https://invidious.snopyta.org
+      - CONFIG_DISABLE_BITTORRENT_SEARCH=false
+      - CONFIG_HIDDEN_SERVICE_SEARCH=false
+      - CONFIG_INSTANCE_FALLBACK=true
+      - CONFIG_RATE_LIMIT_COOLDOWN=25
+      - CONFIG_CACHE_TIME=20
+      - CONFIG_TEXT_SEARCH_ENGINE=google
+      - OPEN_SEARCH_TITLE="LibreY" #si può sostituire come si vuole
+      - OPEN_SEARCH_DESCRIPTION="Motore di ricerca di MaioLinuX homeserver basato su LibreY un metamotore di ricerca senza javascript e rispettoso della privacy" #idem
+      - OPEN_SEARCH_LONG_NAME="LibreY by MaiuZ" #idem
+    volumes:
+      - ./nginx_logs:/var/log/nginx
+      - ./php_logs:/var/log/php7
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

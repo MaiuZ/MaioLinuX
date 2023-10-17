@@ -1,0 +1,50 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# systemd generates mount units based on this file, see systemd.mount(5).
+# Please run 'systemctl daemon-reload' after making changes here.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sdf3 during installation
+UUID=12345678-1234-1234-1234-123456789012 /               btrfs   defaults,subvol=@rootfs 0       0
+# /boot was on /dev/sdf1 during installation
+UUID=12345678-1234-1234-1234-123456789012 /boot           ext4    defaults        0       2
+# swap was on /dev/sdf2 during installation
+UUID=12345678-1234-1234-1234-123456789012 none            swap    sw              0       0
+
+### VIDEOSORVEGLIANZA
+
+LABEL=videosorveglianza /srv/videosorveglianza auto defaults 0 0
+
+### BTRFS root filesystems
+
+#LABEL=mergerfsdisk1 /mnt/btrfs-roots/mergerfsdisk1 btrfs defaults 0 0
+#LABEL=mergerfsdisk2 /mnt/btrfs-roots/mergerfsdisk2 btrfs defaults 0 0
+#LABEL=mergerfsdisk3 /mnt/btrfs-roots/mergerfsdisk3 btrfs defaults 0 0
+
+### BTRFS data subvolumes
+
+LABEL=mergerfsdisk1 /mnt/disk1 btrfs subvol=/data 0 0
+LABEL=mergerfsdisk2 /mnt/disk2 btrfs subvol=/data 0 0
+LABEL=mergerfsdisk3 /mnt/disk3 btrfs subvol=/data 0 0
+
+### BTRFS content subvolumes
+
+LABEL=mergerfsdisk1 /mnt/snapraid-content/disk1 btrfs subvol=/content 0 0
+LABEL=mergerfsdisk2 /mnt/snapraid-content/disk2 btrfs subvol=/content 0 0
+LABEL=mergerfsdisk3 /mnt/snapraid-content/disk3 btrfs subvol=/content 0 0
+
+### MERGERFS storage
+
+/mnt/disk* /srv/storage fuse.mergerfs defaults,nonempty,allow_other,use_ino,cache.files=partial,moveonenospc=true,dropcacheonclose=true,minfreespace=20G,fsname=mergerfs 0 0
+
+### SnapRAID parity
+
+LABEL=snapraidparity /mnt/parity auto defaults 0 0
+
+### NFS Backup
+
+ip.del.server:/percorso/BackupCasa /mnt/backup nfs defaults 0 0 #sostituitìre con ip e percorso nfs del server di backup

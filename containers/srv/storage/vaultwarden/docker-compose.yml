@@ -1,0 +1,28 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    ports:
+      - 11010:80
+    environment:
+      DOMAIN: "https://vault.$YOURDOMAIN"  # Your domain; vaultwarden needs to know it's https to work properly with attachments
+      WEBSOCKET_ENABLED: "true"
+      SIGNUPS_ALLOWED: "false"
+      ADMIN_TOKEN: $$argon2id$$v=19$$m=65540,t=3,p= #per creare la "strongpassword": echo -n "strongpassword" | argon2 "$(openssl rand -base64 32)" -e -id -k 65540 -t 3 -p 4 | sed 's#\$#\$\$#g'
+      LOGIN_RATELIMIT_MAX_BURST: 10
+      LOGIN_RATELIMIT_SECONDS: 60
+      SENDS_ALLOWED: "true"
+      EMERGENCY_ACCESS_ALLOWED: "true"
+      SMTP_HOST: "$SMTP_HOST_SERVER"
+      SMTP_FROM: "$EMAIL_SERVER"
+      SMTP_FROM_NAME: "Vaultwarden"
+      SMTP_SECURITY: "starttls"
+      SMTP_PORT: 587
+      SMTP_USERNAME: "$SMTP_USERNAME_SERVER"
+      SMTP_PASSWORD: "$SMTP_PASSWORD_SERVER"
+      SMTP_AUTH_MECHANISM: "Plain"
+    volumes:
+      - $DOCKERS_DIR/vaultwarden/data:/data
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

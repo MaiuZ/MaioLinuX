@@ -1,0 +1,25 @@
+---
+networks:
+  authelia:
+    driver: bridge
+
+services:
+  authelia:
+    image: authelia/authelia:latest
+    container_name: authelia
+    volumes:
+      - ./config:/config
+    networks:
+      - authelia
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    expose:
+      - 9091
+    ports:
+      - 9091:9091
+    restart: unless-stopped
+    healthcheck:
+      ## In production the healthcheck section should be commented.
+      disable: true
+    environment:
+      - TZ=$TZ

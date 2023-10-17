@@ -1,0 +1,144 @@
+#  When your config is ok comment block below to disable use of AMCE staging server
+#{
+#    acme_ca https://acme-staging-v02.api.letsencrypt.org/directory 
+#}
+
+### Log
+
+# log {
+# 	output file /data/access.log {
+# 		roll_size 2mb
+# 		roll_keep 5
+# 		roll_keep_for 720h
+# 	}
+# }
+
+### Autorizzazione al server
+  
+(basic-auth) {
+  basicauth / {
+    User token #vedi https://josheli.com/knob/2021/02/24/single-sign-on-in-caddy-server-using-only-the-caddyfile-and-basic-authentication/ ma è da sostituire con authelia o con caddy auth
+  }
+}
+# a snippet to check if a cookie token is set. if not, store the current page as the referer and redirect to auth site
+(proxy-auth) {
+  # if cookie not = some-token-nonsense
+  @no-auth {
+    not header_regexp mycookie Cookie myid=<regex-to-match-id>
+    # https://github.com/caddyserver/caddy/issues/3916
+  }
+   
+  # store current time, page and redirect to auth
+  route @no-auth {
+    header Set-Cookie "myreferer={scheme}://{host}{uri}; Domain=yourdomain.tld; Path=/; Max-Age=30; HttpOnly; SameSite=Strict; Secure" #sostituire yourdomain.tld con il proprio dominio
+    redir https://auth.yourdomain.tld #sostituire yourdomain.tld con il proprio dominio
+  }
+}
+ 
+# a pseudo site that only requires basic auth, sets cookie, and redirects back to original site
+auth.yourdomain.tld { #sostituire yourdomain.tld con il proprio dominio
+  route / {
+    # require authentication
+    import basic-auth
+ 
+    # upon successful auth, set a client token
+    header Set-Cookie "myid=random_cookie; Domain=yourdomain.tld; Path=/; Max-Age=3600; HttpOnly; SameSite=Strict; Secure" #sostituire yourdomain.tld con il proprio dominio sostituisci random_cookie con una stinga abbastanza lunga ad esempio da 64 caratteri generata su https://bitwarden.com/password-generator/
+     
+    #delete the referer cookie
+    header +Set-Cookie "myreferer=null; Domain=yourdomain.tld; Path=/; Expires=Thu, 25 Sep 1971 12:00:00 GMT; HttpOnly; SameSite=Strict; Secure" #sostituire yourdomain.tld con il proprio dominio
+     
+    # redirect back to the original site
+    redir {http.request.cookie.myreferer}
+  }
+ 
+  # fallback
+  respond "Saluti da MaioLinuX homeserver"
+}
+
+
+### Server
+
+https://www.yourdomain.tld #sostituire yourdomain.tld con il proprio dominio { 
+  respond "Saluti da MaioLinuX homeserver"
+  file_server
+}
+
+### Nextcloud
+
+https://nuvola.yourdomain.tld:443 { #sostituire yourdomain.tld con il proprio dominio
+	header Strict-Transport-Security max-age=31536000;
+	reverse_proxy localhost:11000
+}
+
+### Vaultwarden
+
+(admin_redir) {
+       @admin {
+               path /admin*
+               not remote_ip private_ranges
+       }
+#       redir @admin /
+	respond @admin "The admin panel is disabled, please configure the 'ADMIN_TOKEN' variable to enable it"
+}
+
+https://vault.yourdomain.tld:443 { #sostituire yourdomain.tld con il proprio dominio
+  log {
+    level INFO
+    output file {$LOG_FILE} {
+      roll_size 10MB
+      roll_keep 10
+    }
+  }
+
+  # Use the ACME HTTP-01 challenge to get a cert for the configured domain.
+  tls {$EMAIL}
+
+  # This setting may have compatibility issues with some browsers
+  # (e.g., attachment downloading on Firefox). Try disabling this
+  # if you encounter issues.
+  encode gzip
+
+  import admin_redir
+
+  # Proxy everything Rocket
+  reverse_proxy localhost:11010 {
+       # Send the true remote IP to Rocket, so that vaultwarden can put this in the
+       # log, so that fail2ban can ban the correct IP.
+       header_up X-Real-IP {remote_host}
+  }
+}
+
+### Home Assistant
+
+https://ha.yourdomain.tld:443 { #sostituire yourdomain.tld con il proprio dominio
+	header Strict-Transport-Security max-age=31536000;
+	reverse_proxy localhost:8123 {
+       header_up X-Real-IP {remote_host}
+  }
+}
+
+### SearXNG
+
+https://cerca.yourdomain.tld { #sostituire yourdomain.tld con il proprio dominio
+        import basic-auth
+        encode zstd gzip
+        reverse_proxy localhost:18080 {
+               header_up X-Forwarded-Port {http.request.port}
+               header_up X-Forwarded-Proto {http.request.scheme}
+               header_up X-Real-IP {remote_host}
+        }
+}
+
+### VPN
+
+https://vpn.yourdomain.tld { #sostituire yourdomain.tld con il proprio dominio
+  respond "Saluti da Saluti da MaioLinuX homeserver"
+  file_server
+}
+
+### Plex
+
+https://plex.yourdomain.tld { #sostituire yourdomain.tld con il proprio dominio
+	header Strict-Transport-Security max-age=31536000;
+	reverse_proxy localhost:32400
+}

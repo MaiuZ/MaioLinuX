@@ -1,0 +1,41 @@
+services:
+  kopia:
+      image: kopia/kopia:latest
+      container_name: kopia
+      restart: unless-stopped
+      privileged: true
+      cap_add:
+        - SYS_ADMIN
+      security_opt:
+        - apparmor:unconfined
+      devices:
+        - /dev/fuse:/dev/fuse:rwm
+      ports:
+        - 41414:51515
+      command:
+        - server
+        - start
+        - --disable-csrf-token-checks
+        - --insecure
+#        - --tls-cert-file=/data/home/XXX/ssl-certs/fullchain.pem
+#        - --tls-key-file=/data/home/XXX/ssl-certs/privkey.pem
+        - --address=0.0.0.0:51515
+        - --server-username=$DEFAULT_USER
+        - --server-password=$DEFAULT_USER_PASSWORD
+      volumes:
+        # Mount local folders needed by kopia
+        - ./config:/app/config
+        - ./cache:/app/cache
+        - ./logs:/app/logs
+        # Mount local folders to snapshot
+        - /:/data:ro
+        # Mount repository location
+        - $BACKUP_REPOSITORY/kopia:/repository
+        # Mount path for browsing mounted snaphots
+        - ./mounted_snaposhot:/tmp:shared
+      environment:
+        KOPIA_PASSWORD: $DEFAULT_USER_PASSWORD
+        TZ: $TZ
+        USER: $DEFAULT_USER
+      labels:
+        - "com.centurylinklabs.watchtower.enable=true"

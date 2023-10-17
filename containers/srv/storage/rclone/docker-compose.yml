@@ -1,0 +1,24 @@
+services:
+  rclone:
+    image: rclone/rclone
+    container_name: rclone
+    restart: unless-stopped
+    command: rcd --rc-web-gui --rc-addr :5572 --rc-user $DEFAULT_USER --rc-pass $DEFAULT_USER_PASSWORD
+    ports:
+      - "5572:5572"
+    volumes:
+      - $DOCKERS_DIR/rclone/config:/config/rclone
+      - $DOCKERS_DIR/rclone/logs:/logs
+      - $DOCKERS_DIR/rclone/data:/data:shared
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    environment:
+      - PHP_TZ=$TZ
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

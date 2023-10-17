@@ -1,0 +1,14 @@
+services:
+  caddy:
+    image: caddy
+    restart: unless-stopped
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./data:/data
+    environment:
+      - TZ=$TZ
+      - EMAIL=$EMAIL_SERVER                 # The email address to use for ACME registration.
+      - LOG_FILE="/data/access.log"
+    network_mode: "host"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

@@ -1,0 +1,29 @@
+mqtt:
+  enabled: false
+cameras:
+  Camera:
+    ffmpeg:
+      inputs:
+        - path: rtsp://user:password@192.168.0.71:88/videoMain
+          roles:
+            - detect
+            - record
+    objects:
+      track:
+        - person
+        - dog
+        - bicycle
+        - car
+        - motorcycle
+    detect:
+      width: 1920
+      height: 1080
+    record:
+      enabled: True
+      retain:
+        days: 7
+        mode: all
+detectors:
+    cpu1:
+      type: cpu
+      num_threads: 2

@@ -1,0 +1,12 @@
+[nextcloud]
+backend = auto
+enabled = true
+#chain = DOCKER-USER
+#port = 80,443
+#protocol = tcp
+filter = nextcloud
+maxretry = 5
+bantime = 86400
+findtime = 43200
+banaction = %(banaction_allports)s
+logpath = /var/lib/docker/volumes/nextcloud_aio_nextcloud/_data/data/nextcloud.log #sostituire "/var/lib/docker/volumes" con il valore "DOCKER_VOLUMES" del file general_parameters.env

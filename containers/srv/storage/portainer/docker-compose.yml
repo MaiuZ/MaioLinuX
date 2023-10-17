@@ -1,0 +1,15 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - $DOCKERS_DIR/portainer/data:/data
+    ports:
+      - 12000:9000
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"

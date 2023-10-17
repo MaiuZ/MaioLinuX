@@ -1,0 +1,51 @@
+services:
+
+  redis:
+    container_name: searxng-db
+    image: "redis:alpine"
+    command: redis-server --save "" --appendonly "no"
+    networks:
+      - searxng
+    tmpfs:
+      - /var/lib/redis
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETGID
+      - SETUID
+      - DAC_OVERRIDE
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  searxng:
+    container_name: searxng-mastercontainer
+    image: searxng/searxng:latest
+    networks:
+      - searxng
+    ports:
+     - "127.0.0.1:18080:8080"
+    volumes:
+      - ./searxng:/etc/searxng:rw
+      - ./img:/usr/local/searxng/searx/static/themes/simple/img
+    environment:
+      - SEARXNG_BASE_URL=https://${SEARXNG_HOSTNAME:-localhost}/
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+networks:
+  searxng:
+    ipam:
+      driver: default

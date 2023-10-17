@@ -1,0 +1,27 @@
+### package bonus per la lettura dei dati del legrand EcoCompteur fonte: https://community.home-assistant.io/t/how-to-decode-special-json-ex-conso-hc-006699756/253018/35
+
+homeassistant:
+
+sensor:
+
+  - platform: rest
+    resource: http://ip_ecocompteur/inst.json #sostituire ip_ecompteur con quello effettivo
+    name: Potenza istantanea Zona 1 #sostituire Zona 1 con qullo che si vuole idem sotto
+    value_template: '{{ value_json.data1| round(0) }}'
+    device_class: power
+    unit_of_measurement: W
+
+  - platform: rest
+    resource: http://ip_ecocompteur/inst.json
+    name: Potenza istantanea Zona 2
+    value_template: '{{ value_json.data2| round(0) }}'
+    device_class: power
+    unit_of_measurement: W
+
+  - platform: rest
+    resource: http://ip_ecocompteur/inst.json
+    name: Potenza istantanea Zona 3
+    value_template: '{{ value_json.data3| round(0) }}'
+    device_class: power
+    unit_of_measurement: W
+    
