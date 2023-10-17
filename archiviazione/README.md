@@ -1,16 +1,16 @@
-Qui ci sono le istruzioni per la gestione dell'archiviazione del server.
+# Qui ci sono le istruzioni per la gestione dell'archiviazione del server.
 
-Comprende:
+## Comprende:
  - fstab per la configurazione standard degli hdd
  - snapraid
  - snapper
  - snapraid-btrfs-runner
 
-Fonti:
+## Fonti:
  - https://wiki.selfhosted.show/tools/snapraid-btrfs/
  - https://perfectmediaserver.com/03-installation/manual-install-ubuntu/
 
-Memo:
+## Memo:
  - ricordarsi di avviare snapraid-btrfs-runner con:
    - sudo crontab -e
    - appendere:

@@ -14,7 +14,7 @@
    ```
 4. testare se il relativo file `docker-compose.yml` funziona:
    ```
-   sudo docker-compose --verbose --env-file ../general_parameters.env config
+   sudo docker-compose --env-file ../general_parameters.env config
    ```
 5. se è tutto a posto si può lanciare il container con:
    ```
