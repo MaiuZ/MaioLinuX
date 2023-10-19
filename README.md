@@ -5,7 +5,15 @@ Io non sono un programmatore, ma un "normale" utente di linux, in particolare di
 
 ## Cos'è?
 Si tratta di un server pensato per essere utilizzato in ambito domestico. Lo scopo di questo repository è quello di fornire una guida passo passo, degli esempi, del codice ed una serie di collegamenti per realizzarlo con competenze informatiche non esagerate.
-Se volete desiderate qualcosa di automatico vi consiglio di 
+Se volete desiderate qualcosa di automatico vi consiglio di valutare in ordine sparso:
+- https://homelabos.com/
+- https://umbrel.com/
+- https://ansible-nas.io/
+- https://www.casaos.io/
+- https://dockstarter.com/
+- https://openmediavault.org/
+- https://yunohost.org/
+che non ho utilizzato perché volevo capire cosa stavo facendo.
 
 ## Perché
 Per riprendersi in mano i propri dati ed avere un maggior controllo e personalizzazione sulle risorse informatiche, realizzando un ambiente privato all'interno della propria casa.
