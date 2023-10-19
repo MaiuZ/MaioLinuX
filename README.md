@@ -13,6 +13,7 @@ Se volete desiderate qualcosa di automatico vi consiglio di valutare in ordine s
 - https://dockstarter.com/
 - https://openmediavault.org/
 - https://yunohost.org/
+
 che non ho utilizzato perché volevo capire cosa stavo facendo.
 
 ## Perché
