@@ -9,7 +9,8 @@
     - vedi anche https://www.abuseipdb.com/bulk-report
 8. pihole (con vpn, ma da solo così che anche i pc di casa si collegano attraverso di lui vedi: https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-Pi-Hole)
 9. aggiungere una guida su quali passi fare per primi (iniziato)
-10. mettere le licenze ovunque
+10. firefox sync - vedi https://thesmarthomejourney.com/2023/03/18/self-hosting-firefox-sync/
+11. mettere le licenze ovunque
 12. un portale magari con diverso modo di vedere se locale o da internet - vedi https://docs.organizr.app/
 13. un AI vedi - https://github.com/getumbrel/llama-gpt
 14. verificare il discorso degli utenti di Linuxserver.io
