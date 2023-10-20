@@ -43,7 +43,7 @@ Ma se volete risparmiarvi la lettura della guida vi consiglio:
 
 
 ### Archiviazione
-si veda: [archiviazione](../archiviazione) )
+si veda: [archiviazione](../archiviazione)
 
 ### Impostazioni
 
