@@ -136,9 +136,16 @@ https://vpn.yourdomain.tld { #sostituire yourdomain.tld con il proprio dominio
   file_server
 }
 
-### Plex
+# ### Plex
 
-https://plex.yourdomain.tld { #sostituire yourdomain.tld con il proprio dominio
+# https://mm.yourdomain.tld:443 { #sostituire yourdomain.tld con il proprio dominio
+# 	header Strict-Transport-Security max-age=31536000;
+# 	reverse_proxy localhost:32400
+# }
+
+### Jellyfin
+
+https://mm.yourdomain.tld:443 { #sostituire yourdomain.tld con il proprio dominio
 	header Strict-Transport-Security max-age=31536000;
-	reverse_proxy localhost:32400
+	reverse_proxy localhost:8096
 }

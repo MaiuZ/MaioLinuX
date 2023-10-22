@@ -13,5 +13,6 @@
  -  [rclone](srv/storage/rclone) - per sincronizzare i vari cloud
  -  [authelia](srv/storage/authelia) - gestore accessi
  -  [plex](srv/storage/plex) - server multimedia
+ -  [jellyfin](srv/storage/containers/jellyfin) - server multimediale preferibile a plex
 # Attenzione!
 vedere [procedura avvio containers](./srv/storage#procedura-avvio-containers)

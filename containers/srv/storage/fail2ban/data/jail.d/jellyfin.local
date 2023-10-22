@@ -1,9 +1,9 @@
-[homeassistant]
+[jellyfin]
 backend = auto
 enabled = true
-filter = homeassistant
+filter = jellyfin
 maxretry = 5
 bantime = 86400
 findtime = 43200
 banaction = %(banaction_allports)s
-logpath = /jails/homeassistant/home-assistant.log
+logpath = /jails/jellyfin/log*.log
