@@ -14,5 +14,7 @@
  -  [authelia](srv/storage/authelia) - gestore accessi
  -  [plex](srv/storage/plex) - server multimedia
  -  [jellyfin](srv/storage/containers/jellyfin) - server multimediale preferibile a plex
+ -  [duplicati](srv/storage/containers/duplicati) - backup preferito a kopia
+ -  [heimdall](srv/storage/containers/heimdall) - portale
 # Attenzione!
 vedere [procedura avvio containers](./srv/storage#procedura-avvio-containers)
