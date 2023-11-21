@@ -3,16 +3,23 @@ services:
     image: linuxserver/duplicati:latest
     container_name: duplicati
     environment:
-      - PUID=$UID
-      - PGID=$GID
+      - PUID=0
+      - PGID=0
       - TZ=$TZ
       - CLI_ARGS= #optional
     volumes:
       - ./config:/config
-#      - $BACKUP_REPOSITORY/duplicati:/backups # valutare se utilizzarlo o meno io ho preferito utilizzare il programma per definire i repository su cui salvare i backup
+#      - $BACKUP_REPOSITORY/duplicati:/backups
       - /:/source:ro
     ports:
       - 8200:8200
     restart: unless-stopped
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
