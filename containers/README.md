@@ -16,5 +16,6 @@
  -  [jellyfin](srv/storage/containers/jellyfin) - server multimediale preferibile a plex
  -  [duplicati](srv/storage/containers/duplicati) - backup preferito a kopia
  -  [heimdall](srv/storage/containers/heimdall) - portale
+ -  [dynuiu](srv/storage/containers/dynuiuc) - client ddns per aggiornare il proprio indirizzo ip online
 # Attenzione!
 vedere [procedura avvio containers](./srv/storage#procedura-avvio-containers)
