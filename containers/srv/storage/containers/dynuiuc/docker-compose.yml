@@ -1,0 +1,10 @@
+services:
+  dynuiuc:
+    image: ghcr.io/go2engle/dynuiuc
+    container_name: dynuiuc
+    environment:
+      - USERNAME=$DDNSUSER
+      - PASSWORD=$DDNSPWD
+    restart: unless-stopped
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
