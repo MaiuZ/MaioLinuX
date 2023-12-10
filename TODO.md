@@ -3,7 +3,7 @@
 2. ~~utilizzare .evn per i file docker e nascondere eventuali segreti (secrets)~~
 3. ~~unattended upgrade (server mail)~~
 4. ~~installare plex~~ -> passato a jellyfin
-5. clien ddns (duckdns o dynu)
+5. ~~client ddns (duckdns o dynu)~~
 5. spostare i containers in /srv/storage/containers, i dati in /srv/storage/dati ecc. (valutare)
 6.  impostare authelia per il login con ban (vedi: https://github.com/authelia/authelia/blob/master/examples/compose/lite/authelia/configuration.yml)
 7.  ban fail2ban caddy (vedi https://muetsch.io/how-to-integrate-caddy-with-fail2ban.html attenzione che forse non vanno bene tutte quelle porte almeno attiva i client non bannabili anche vpn)
