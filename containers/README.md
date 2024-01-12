@@ -17,5 +17,6 @@
  -  [duplicati](srv/storage/containers/duplicati) - backup preferito a kopia
  -  [heimdall](srv/storage/containers/heimdall) - portale
  -  [dynuiuc](srv/storage/containers/dynuiuc) - client ddns per aggiornare il proprio indirizzo ip online
+ -  [upsnap](srv/storage/containers/upsnap) - portale per controllare accensione spegnimento di altri pc/devices anche tramite Wake On Lan
 # Attenzione!
 vedere [procedura avvio containers](./srv/storage#procedura-avvio-containers)
