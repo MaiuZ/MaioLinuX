@@ -1,18 +1,24 @@
 # Primo avvio del container
-1. creare le cartelle `config` e `cache` 
+1. Clonare il repository Perplexica:
+
+   ```bash
+   git clone https://github.com/ItzCrazyKns/Perplexica.git
    ```
-   sudo mkdir {config,cache}
+2. editare i file `config.toml` e `app.dockerfile` adeguandoli alla nostra configurazione cambiando IP e porte come da esempio allegato
    ```
-2. cambiargli il proprietario
+   sudo nano config.toml
+   sudo nano app.dockerfile
    ```
-   sudo chown utente:gruppo {config,cache}
-   ```
-   dove utente e gruppo vanno sostituiti con quelli dell'utente normale (si possono verificare digitando: `id $user` come utente normale)
-3. testare la configurazione `docker-compose.yml` digitando:
+3. sostituir ed editare `docker-compose.yml` con quello fornito qui
+4. testare la configurazione `docker-compose.yml` digitando:
    ```
    sudo docker-compose --env-file ../general_parameters.env config
    ```
-4. se è tutto a posto si può lanciare il container con:
+5. compilare il container:
+   ```
+   sudo docker-compose --env-file ../general_parameters.env build
+   ```
+6. se è tutto a posto si può lanciare il container con:
    ```
    sudo docker-compose --env-file ../general_parameters.env up -d
    ```

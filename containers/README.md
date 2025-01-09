@@ -1,18 +1,18 @@
 # Lista containers installati:
- -  [portainer](srv/storage/portainer) - è un gestore di container e si accede dalla porta 9000
- -  [caddy](srv/storage/caddy) - è un reverse proxy e serve per connettere far comunicare la rete esterna con i container
- -  [nextcloud](srv/storage/nextcloud) - è il server dei file
- -  [vaultwarden](srv/storage/vaultwarden) - è un gestore di password
- -  [home assistant](srv/storage/homeassistant) - è un gestore di domotica - assistente casalingo
- -  [motioneye](srv/storage/motioneye) - videosorveglianza
- -  [fail2ban](srv/storage/fail2ban) - è per bannare i tentativi di accesso indesiderati
- -  [watchtower](srv/storage/watchtower) - per aggiornare automaticamente i container
- -  [searxng](srv/storage/searxng) - metamotore di ricerca
- -  [kopia](srv/storage/kopia) - backup
- -  [wireguard](srv/storage/wireguard) - VPN
- -  [rclone](srv/storage/rclone) - per sincronizzare i vari cloud
- -  [authelia](srv/storage/authelia) - gestore accessi
- -  [plex](srv/storage/plex) - server multimedia
+ -  [portainer](srv/storage/containers/portainer) - è un gestore di container e si accede dalla porta 9000
+ -  [caddy](srv/storage/containers/caddy) - è un reverse proxy e serve per connettere far comunicare la rete esterna con i container
+ -  [nextcloud](srv/storage/containers/nextcloud) - è il server dei file
+ -  [vaultwarden](srv/storage/containers/vaultwarden) - è un gestore di password
+ -  [home assistant](srv/storage/containers/homeassistant) - è un gestore di domotica - assistente casalingo
+ -  [motioneye](srv/storage/containers/motioneye) - videosorveglianza
+ -  [fail2ban](srv/storage/containers/fail2ban) - è per bannare i tentativi di accesso indesiderati
+ -  [watchtower](srv/storage/containers/watchtower) - per aggiornare automaticamente i container
+ -  [searxng](srv/storage/containers/searxng) - metamotore di ricerca
+ -  [kopia](srv/storage/containers/kopia) - backup
+ -  [wireguard](srv/storage/containers/wireguard) - VPN
+ -  [rclone](srv/storage/containers/rclone) - per sincronizzare i vari cloud
+ -  [authelia](srv/storage/containers/authelia) - gestore accessi
+ -  [plex](srv/storage/containers/plex) - server multimedia
  -  [jellyfin](srv/storage/containers/jellyfin) - server multimediale preferibile a plex
  -  [duplicati](srv/storage/containers/duplicati) - backup preferito a kopia
  -  [heimdall](srv/storage/containers/heimdall) - portale
