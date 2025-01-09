@@ -1,0 +1,11 @@
+# Stable Diffusion in NCNN with c++, supported txt2img and img2img 
+- url: github:go-skynet/model-gallery/stablediffusion.yaml
+  name: Stable_diffusion
+
+# Port of OpenAI's Whisper model in C/C++ 
+- url: github:go-skynet/model-gallery/whisper-base.yaml
+  name: whisper-1
+
+# A commercially licensable model based on GPT-J and trained by Nomic AI on the v0 GPT4All dataset.
+- url: github:go-skynet/model-gallery/gpt4all-j.yaml
+  name: gpt4all-j

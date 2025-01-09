@@ -8,8 +8,7 @@ services:
       - ./data:/data
       - $DOCKER_VOLUMES/nextcloud_aio_nextcloud/_data/data:/jails/nextcloud:ro #nextcloud
       - $DOCKERS_DIR/homeassistant/config:/jails/homeassistant:ro #homeassistant
-#metti a posto quanfo hai trasferito i containesr      - $DOCKERS_DIR/jellyfin/config/log:/jails/jellyfin:ro #jellyfin
-      - $DOCKERS_DIR/containers/jellyfin/config/log:/jails/jellyfin:ro #cancella quando hai finito di mettere a posto i containers
+      - $DOCKERS_DIR/jellyfin/config/log:/jails/jellyfin:ro #jellyfin
     network_mode: host
     cap_add:
     - NET_ADMIN

@@ -1,0 +1,22 @@
+services:
+  localai-api:
+    container_name: localai-api
+    restart: unless-stopped
+    image: localai/localai:latest-aio-cpu
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/readyz"]
+      interval: 1m
+      timeout: 20m
+      retries: 5
+    ports:
+      - 28080:8080
+    environment:
+      - DEBUG=true
+      - TZ=$TZ
+      - API_KEY=$LOCALAI_API_KEY
+#      - PRELOAD_MODELS_CONFIG=1
+    command:
+      - /models.yaml
+    volumes:
+      - ./models:/build/models:cached
+      - ./models.yaml:/models.yaml

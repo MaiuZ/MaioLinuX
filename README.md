@@ -46,14 +46,14 @@ inizia a leggere la [documentazione](documentazione/inizio.md)!
 ## Licenze
 
 ### Documentazione
-Copyright (C)  2023  Francesco Maioli.
+Copyright (C)  2025  Francesco Maioli.
 
 Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
 A copy of the license is included in the section entitled [LICENSE](documentazione/LICENSE.md) .
 
 ### Codice
 Maiolinux homeserver un server domestico
-Copyright (C) 2023  Francesco Maioli
+Copyright (C) 2025  Francesco Maioli
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 

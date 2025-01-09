@@ -3,7 +3,7 @@
    ```
    sudo mkdir config
    ```
-2. cambiargi il proprietario
+2. cambiargli il proprietario
    ```
    sudo chown utente:gruppo config
    ```

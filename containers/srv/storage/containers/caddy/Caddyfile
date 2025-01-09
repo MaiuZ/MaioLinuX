@@ -70,6 +70,17 @@ https://nuvola.yourdomain.tld:443 { #sostituire yourdomain.tld con il proprio do
 	reverse_proxy localhost:11000
 }
 
+### Collabora
+
+https://collabora.yourdomain.tld:443 {
+	header Strict-Transport-Security max-age=31536000;
+    encode gzip
+    
+	reverse_proxy http://192.168.0.100:9980 {
+       header_up X-Real-IP {remote_host}
+  }
+}
+
 ### Vaultwarden
 
 (admin_redir) {
@@ -148,4 +159,27 @@ https://vpn.yourdomain.tld { #sostituire yourdomain.tld con il proprio dominio
 https://mm.yourdomain.tld:443 { #sostituire yourdomain.tld con il proprio dominio
 	header Strict-Transport-Security max-age=31536000;
 	reverse_proxy localhost:8096
+}
+
+### ElasticSearch
+
+https://elastic.yourdomain.tld:443 {
+	header Strict-Transport-Security max-age=31536000;
+	reverse_proxy localhost:9200 {
+       header_up X-Real-IP {remote_host}
+  }
+}
+
+### Localai
+
+https://ai.yourdomain.tld:443 {
+	header Strict-Transport-Security max-age=31536000;
+	reverse_proxy localhost:28080
+}
+
+### OpenProject
+
+https://openproject.yourdomain.tld:443 {
+	header Strict-Transport-Security max-age=31536000;
+	reverse_proxy localhost:48080
 }

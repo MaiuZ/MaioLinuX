@@ -1,0 +1,16 @@
+services:
+    openproject:
+        image: openproject/openproject:15
+        ports:
+            - 48080:80
+        container_name: openproject
+        environment:
+            - OPENPROJECT_HOST__NAME=openproject.$YOURDOMAIN
+            - OPENPROJECT_SECRET_KEY_BASE=$OPENPROJECT_PWD
+            - OPENPROJECT_EDITION=bim
+        volumes:
+            - ./pgdata:/var/openproject/pgdata
+            - ./assets:/var/openproject/assets
+        labels:
+            - "com.centurylinklabs.watchtower.enable=true"
+            
