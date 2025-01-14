@@ -6,7 +6,7 @@
 5. ~~client ddns (duckdns o dynu)~~
 6. ~~spostare i containers in /srv/storage/containers, i dati in /srv/storage/dati ecc. (valutare)~~
 7. aggiungere i tutti i container nelle descrizioni
-8. impostare authelia per il login con ban (vedi: https://github.com/authelia/authelia/blob/master/examples/compose/lite/authelia/configuration.yml)
+8. impostare authelia (o meglio ancora authentik https://goauthentik.io/) per il login con ban (vedi: https://github.com/authelia/authelia/blob/master/examples/compose/lite/authelia/configuration.yml)
 9. ban fail2ban caddy (vedi https://muetsch.io/how-to-integrate-caddy-with-fail2ban.html attenzione che forse non vanno bene tutte quelle porte almeno attiva i client non bannabili anche vpn)
     - vedi anche https://www.abuseipdb.com/bulk-report
 10. pihole (con vpn, ma da solo così che anche i pc di casa si collegano attraverso di lui vedi: https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-Pi-Hole)
