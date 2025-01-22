@@ -18,5 +18,10 @@
  -  [heimdall](srv/storage/containers/heimdall) - portale
  -  [dynuiuc](srv/storage/containers/dynuiuc) - client ddns per aggiornare il proprio indirizzo ip online
  -  [upsnap](srv/storage/containers/upsnap) - portale per controllare accensione spegnimento di altri pc/devices anche tramite Wake On Lan
+ -  [localai](srv/storage/containers/localai) - llm che si interfaccia con nextcloud
+ -  [openproject](srv/storage/containers/openproject) - gestore di progetti
+ -  [ollama](srv/storage/containers/ollama) - provider llm generico
+ -  [openwebui](srv/storage/containers/openwebui) - interfaccia di comunicazione con large language models
+ -  [perplexica](srv/storage/containers/perplexica) - interfaccia per ricerche web con large language models
 # Attenzione!
 vedere [procedura avvio containers](./srv/storage#procedura-avvio-containers)
